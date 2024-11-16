@@ -12,6 +12,7 @@ from tkinter import messagebox as mb
 from typing import List
 import pyAesCrypt
 from tkinter import Button, Label, Menu, Entry, END
+import re
 
 
 class CryptographerApp:
@@ -87,6 +88,9 @@ class CryptographerApp:
             return
         if not password:
             mb.showerror("Ошибка", "Введите пароль!")
+            return
+        if not re.match(r"^[a-zA-Z]{12,}$", password):
+            mb.showerror("Ошибка", "Пароль должен быть не короче 12 знаков и состоять из латинских букв!")
             return
 
         try:
