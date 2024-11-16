@@ -59,4 +59,7 @@
    ```bash
    python main.py
    ```
-
+4. Команда для создания файла .exe:
+   ```bash
+   pyinstaller --onefile --icon=icons\Cryptographer_icon.ico --noconsole --name=Криптограф main.py
+   ```
