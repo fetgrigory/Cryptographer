@@ -6,6 +6,7 @@ Starting 2022/08/20
 Ending 2024//
 
 '''
+# Installing the necessary libraries
 from tkinter import *
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
@@ -35,15 +36,8 @@ class CryptographerApp:
         self.label.place(x=2, y=100)
 
         self.pass_field = Entry(show='*', width='37')
-        # Moved input field below label
         self.pass_field.place(x=2, y=120)
-        self.encrypt_btn = Button(text='Зашифровать', command=self.crypt)
-        self.encrypt_btn.place(x=7, y=210)
-
-        self.decrypt_btn = Button(text='Расшифровать', command=self.decrypt)
-        self.decrypt_btn.place(x=210, y=210)
         self.create_menu()
-
         # Add file path entry
         self.file_path_label = Label(text='Путь к файлу:')
         self.file_path_label.place(x=2, y=10)
@@ -77,7 +71,24 @@ class CryptographerApp:
             self.file_path_entry.delete(0, END)
             self.file_path_entry.insert(0, file_path)
 
-# The function of the "Encrypt" button
+    def show_info(self):
+        """AI is creating summary for show_info
+        """
+        mb.showinfo("О программе", "Феткулин Григорий - Криптограф, 2022")
+
+
+class Encryptor(CryptographerApp):
+    """AI is creating summary for Encryptor
+
+    Args:
+        CryptographerApp ([type]): [description]
+    """
+    def __init__(self, root):
+        super().__init__(root)
+        self.encrypt_btn = Button(text='Зашифровать', command=self.crypt)
+        self.encrypt_btn.place(x=7, y=210)
+
+    # The function of the "Encrypt" button
     def crypt(self):
         """AI is creating summary for crypt
         """
@@ -99,6 +110,18 @@ class CryptographerApp:
         except Exception as e:
             mb.showerror("Ошибка", f"Ошибка при шифровании: {e}")
 
+
+class Decryptor(CryptographerApp):
+    """AI is creating summary for Decryptor
+
+    Args:
+        CryptographerApp ([type]): [description]
+    """
+    def __init__(self, root):
+        super().__init__(root)
+        self.decrypt_btn = Button(text='Расшифровать', command=self.decrypt)
+        self.decrypt_btn.place(x=210, y=210)
+
 # The function of the "Decrypt" button
     def decrypt(self):
         """AI is creating summary for decrypt
@@ -118,13 +141,8 @@ class CryptographerApp:
         except Exception as e:
             mb.showerror("Ошибка", f"Ошибка при расшифровании: {e}")
 
-    def show_info(self):
-        """AI is creating summary for show_info
-        """
-        mb.showinfo("О программе", "Феткулин Григорий - Криптограф, 2022")
-
 
 if __name__ == "__main__":
     root = Tk()
-    app = CryptographerApp(root)
+    app = Decryptor(root)
     root.mainloop()
